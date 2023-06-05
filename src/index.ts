@@ -13,13 +13,21 @@ const PATH_REPOSITORY: string = process.env.PATH_REPOSITORY || "";
 const QUESTION: string = "Use .env commit message? [y/n]: ";
 const DEFAULT_COMMIT_MESSAGE: string = "Update";
 
-await addExceptionForDirectory(PATH_REPOSITORY);
+async function main() {
+  await addExceptionForDirectory(PATH_REPOSITORY);
 
-await prompt(QUESTION, {
-  y: () => {
-    commitAndPush(PATH_REPOSITORY, process.env.COMMIT_MESSAGE || "");
-  },
-  n: () => {
-    commitAndPush(PATH_REPOSITORY, DEFAULT_COMMIT_MESSAGE);
-  },
+  console.log("Exception added for the directory.");
+
+  await prompt(QUESTION, {
+    y: () => {
+      commitAndPush(PATH_REPOSITORY, process.env.COMMIT_MESSAGE || "");
+    },
+    n: () => {
+      commitAndPush(PATH_REPOSITORY, DEFAULT_COMMIT_MESSAGE);
+    },
+  });
+}
+
+main().catch((error) => {
+  console.error("An error occurred:", error);
 });

@@ -40,13 +40,13 @@ async function prompt(
 
   let keys: string[] = Object.keys(config);
 
-  keys.forEach((key) => {
-    if (key == response) {
-      config[key]();
-    } else {
-      console.log("Invalid response.");
-    }
-  });
+  const isValidResponse = keys.includes(response);
+
+  if (isValidResponse) {
+    config[response]();
+  } else {
+    console.log("Invalid response.");
+  }
 }
 
 export default prompt;

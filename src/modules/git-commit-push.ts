@@ -27,9 +27,6 @@ async function addExceptionForDirectory(pathRepository: string): Promise<void> {
 
   git
     .raw(["config", "--global", "--add", "safe.directory", pathRepository])
-    .then(() => {
-      console.log("Exception added for the directory.");
-    })
     .catch((error) => {
       console.error("Error adding exception:", error);
     });

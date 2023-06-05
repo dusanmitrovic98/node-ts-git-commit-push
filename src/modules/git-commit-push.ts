@@ -1,4 +1,5 @@
 import { simpleGit } from "simple-git";
+import { validateString } from "../utility/string.js";
 
 async function commitAndPush(
   pathRepository: string,
@@ -40,14 +41,6 @@ function Validate(pathRepository: string, commitMessage: string): boolean {
 
   if (!validateString(commitMessage)) {
     console.log("Commit message not specified.");
-    return false;
-  }
-
-  return true;
-}
-
-function validateString(value: string) {
-  if (value == "" || value == undefined) {
     return false;
   }
 

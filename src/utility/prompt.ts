@@ -20,4 +20,6 @@ async function getAnswer(question: string): Promise<string> {
   return response.toLowerCase().trim();
 }
 
-async function prompt(config: Object): Promise<void> {}
+async function prompt(question: string, config: Object): Promise<void> {
+  const response = await getAnswer(question);
+}

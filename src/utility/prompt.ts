@@ -36,3 +36,5 @@ async function prompt(
     }
   });
 }
+
+export default prompt;

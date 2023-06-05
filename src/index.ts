@@ -1,4 +1,4 @@
-// Copyright (c) Dusan Mitrovic (BK2O198) 2023
+// Copyright (c) 2023 Dusan Mitrovic (BK2O198)
 
 import commitAndPush from "./modules/git-commit-push.js";
 

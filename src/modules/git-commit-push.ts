@@ -19,7 +19,7 @@ async function commitAndPush(
 }
 
 async function addExceptionForDirectory(pathRepository: string): Promise<void> {
-  if (pathRepository == "" || pathRepository == undefined) {
+  if (validateString(pathRepository)) {
     return;
   }
 
@@ -33,13 +33,21 @@ async function addExceptionForDirectory(pathRepository: string): Promise<void> {
 }
 
 function Validate(pathRepository: string, commitMessage: string): boolean {
-  if (pathRepository == "" || pathRepository == undefined) {
+  if (!validateString(pathRepository)) {
     console.log("Repository path not specified.");
     return false;
   }
 
-  if (commitMessage == "" || commitMessage == undefined) {
+  if (!validateString(commitMessage)) {
     console.log("Commit message not specified.");
+    return false;
+  }
+
+  return true;
+}
+
+function validateString(value: string) {
+  if (value == "" || value == undefined) {
     return false;
   }
 

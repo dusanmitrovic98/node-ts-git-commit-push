@@ -19,6 +19,10 @@ async function commitAndPush(
 }
 
 async function addExceptionForDirectory(pathRepository: string): Promise<void> {
+  if (pathRepository == "" || pathRepository == undefined) {
+    return;
+  }
+
   const git = simpleGit(pathRepository);
 
   git

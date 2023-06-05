@@ -3,10 +3,19 @@
 import dotenv from "dotenv";
 
 import commitAndPush from "./modules/git-commit-push.js";
+import prompt from "./utility/prompt.js";
 
 dotenv.config();
 
-const pathRepository: string = process.env.PATH_REPOSITORY || "";
-const commitMessage: string = process.env.COMMIT_MESSAGE || "";
+const PATH_REPOSITORY: string = process.env.PATH_REPOSITORY || "";
+const QUESTION: string = "Use .env commit message? [y/n]: ";
+const DEFAULT_COMMIT_MESSAGE: string = "Update";
 
-// commitAndPush(pathRepository, commitMessage);
+await prompt(QUESTION, {
+  y: () => {
+    commitAndPush(PATH_REPOSITORY, process.env.COMMIT_MESSAGE || "");
+  },
+  n: () => {
+    commitAndPush(PATH_REPOSITORY, DEFAULT_COMMIT_MESSAGE);
+  },
+});

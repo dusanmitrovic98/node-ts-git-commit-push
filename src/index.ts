@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 
 import commitAndPush, {
   addExceptionForDirectory,
-} from "./modules/git-commit-push/git-commit-push.js";
+} from "./modules/git-commit-push.js";
 import prompt from "./utility/prompt/prompt.js";
 
 dotenv.config();

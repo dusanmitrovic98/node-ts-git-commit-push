@@ -9,4 +9,4 @@ dotenv.config();
 const pathRepository: string = process.env.PATH_REPOSITORY || "";
 const commitMessage: string = process.env.COMMIT_MESSAGE || "";
 
-commitAndPush(pathRepository, commitMessage);
+// commitAndPush(pathRepository, commitMessage);

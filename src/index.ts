@@ -6,7 +6,7 @@ import commitAndPush from "./modules/git-commit-push.js";
 
 dotenv.config();
 
-const pathRepository: string = "";
-const commitMessage: string = "";
+const pathRepository: string = process.env.PATH_REPOSITORY || "";
+const commitMessage: string = process.env.COMMIT_MESSAGE || "";
 
 commitAndPush(pathRepository, commitMessage);

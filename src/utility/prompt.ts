@@ -1,6 +1,6 @@
 import readline from "readline";
 
-function ask(question: string): Promise<string> {
+async function ask(question: string): Promise<string> {
   const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout,
@@ -12,6 +12,12 @@ function ask(question: string): Promise<string> {
       resolve(answer);
     });
   });
+}
+
+async function getAnswer(question: string): Promise<string> {
+  const response = await ask(question);
+
+  return response.toLowerCase().trim();
 }
 
 async function prompt(config: Object): Promise<void> {}

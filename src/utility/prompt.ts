@@ -22,9 +22,21 @@ async function getAnswer(question: string): Promise<string> {
 
 async function prompt(
   question: string,
-  config: { [key: string]: any }
+  config?: { [key: string]: any }
 ): Promise<void> {
   const response: any = await getAnswer(question);
+
+  if (!config) {
+    if (response === "y") {
+      console.log('User responded with "yes"');
+    } else if (response === "n") {
+      console.log('User responded with "no"');
+    } else {
+      console.log("Invalid response");
+    }
+
+    return;
+  }
 
   let keys: string[] = Object.keys(config);
 

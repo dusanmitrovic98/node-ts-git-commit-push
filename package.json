@@ -16,5 +16,8 @@
     "@types/node": "^18.11.9",
     "nodemon": "^2.0.22",
     "typescript": "^4.9.3"
+  },
+  "dependencies": {
+    "simple-git": "^3.19.0"
   }
 }

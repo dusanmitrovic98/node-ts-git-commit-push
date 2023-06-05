@@ -20,6 +20,19 @@ async function getAnswer(question: string): Promise<string> {
   return response.toLowerCase().trim();
 }
 
-async function prompt(question: string, config: Object): Promise<void> {
-  const response = await getAnswer(question);
+async function prompt(
+  question: string,
+  config: { [key: string]: any }
+): Promise<void> {
+  const response: any = await getAnswer(question);
+
+  let keys: string[] = Object.keys(config);
+
+  keys.forEach((key) => {
+    if (key == response) {
+      config[key]();
+    } else {
+      console.log("Invalid response.");
+    }
+  });
 }

@@ -1,4 +1,4 @@
-import { SimpleGit, simpleGit } from "simple-git";
+import { simpleGit } from "simple-git";
 
 async function commitAndPush(
   pathRepository: string,
@@ -11,7 +11,6 @@ async function commitAndPush(
   console.log(pathRepository);
   const git = simpleGit(pathRepository);
 
-  await addExceptionForDirectory(git, pathRepository);
   await git.add("./*");
   await git.commit(commitMessage);
   await git.push();
@@ -19,10 +18,9 @@ async function commitAndPush(
   console.log("Changes committed and pushed successfully.");
 }
 
-async function addExceptionForDirectory(
-  git: SimpleGit,
-  pathRepository: string
-): Promise<void> {
+async function addExceptionForDirectory(pathRepository: string): Promise<void> {
+  const git = simpleGit(pathRepository);
+
   git
     .raw(["config", "--global", "--add", "safe.directory", pathRepository])
     .then(() => {
@@ -46,5 +44,7 @@ function Validate(pathRepository: string, commitMessage: string): boolean {
 
   return true;
 }
+
+export { addExceptionForDirectory };
 
 export default commitAndPush;

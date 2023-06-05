@@ -2,7 +2,9 @@
 
 import dotenv from "dotenv";
 
-import commitAndPush from "./modules/git-commit-push.js";
+import commitAndPush, {
+  addExceptionForDirectory,
+} from "./modules/git-commit-push.js";
 import prompt from "./utility/prompt.js";
 
 dotenv.config();
@@ -10,6 +12,8 @@ dotenv.config();
 const PATH_REPOSITORY: string = process.env.PATH_REPOSITORY || "";
 const QUESTION: string = "Use .env commit message? [y/n]: ";
 const DEFAULT_COMMIT_MESSAGE: string = "Update";
+
+await addExceptionForDirectory(PATH_REPOSITORY);
 
 await prompt(QUESTION, {
   y: () => {

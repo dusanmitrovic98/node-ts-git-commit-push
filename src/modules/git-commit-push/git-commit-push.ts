@@ -1,5 +1,5 @@
 import { simpleGit } from "simple-git";
-import { validateString } from "../utility/string.js";
+import { validateString } from "../../utility/string/string.js";
 
 async function commitAndPush(
   pathRepository: string,
